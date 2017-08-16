@@ -4,28 +4,25 @@ package com.example.wnsgu.myapplication;
  * Created by wnsgu on 2017-08-04.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.kakao.auth.ApiResponseCallback;
 import com.kakao.auth.ErrorCode;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
-
 import com.kakao.util.helper.log.Logger;
 
-public class KakaoSignupActivity extends Activity{
+
+public class KakaoSignupActivity extends AppCompatActivity {
     /**
      * Main으로 넘길지 가입 페이지를 그릴지 판단하기 위해 me를 호출한다.
      * @param savedInstanceState 기존 session 정보가 저장된 객체
      */
-    public final Intent Image = new Intent(this, ImageClick.class);
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,6 +34,8 @@ public class KakaoSignupActivity extends Activity{
      * 사용자의 상태를 알아 보기 위해 me API 호출을 한다.
      */
     protected void requestMe() { //유저의 정보를 받아오는 함수
+
+        final Intent Image = new Intent(this, ImageClick.class);
         UserManagement.requestMe(new MeResponseCallback() {
             @Override
             public void onFailure(ErrorResult errorResult) {

@@ -1,8 +1,7 @@
 package com.example.wnsgu.myapplication;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -10,7 +9,7 @@ import android.widget.ImageView;
  * Created by yeonjin on 2017-08-09.
  */
 
-public class ImageClick extends Activity {
+public class ImageClick extends AppCompatActivity {
     int num;
     ImageView iv;
    @Override

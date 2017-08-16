@@ -1,8 +1,8 @@
 package com.example.wnsgu.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -24,7 +24,7 @@ import com.kakao.util.helper.log.Logger;
  * Created by wnsgu on 2017-08-04.
  */
 
-public class LoginActivity  extends Activity {
+public class LoginActivity  extends AppCompatActivity {
 
     private SessionCallback callback;      //콜백 선언
     CallbackManager callbackManager;
