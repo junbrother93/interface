@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,6 +20,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //listview, footer, header 참조 회득
+        ListView listview = (ListView)findViewById(R.id.listview1);
+        final View footer = getLayoutInflater().inflate(R.layout.navigation_bar, null, false);
+        View header = getLayoutInflater().inflate(R.layout.head_bar,null,false);
+
+        listview.addHeaderView(header);
+
+        ListViewAdapter adapter;
+
+        adapter = new ListViewAdapter();
+        listview.setAdapter(adapter);
+
 
         // Add code to print out the key hash
         try {
@@ -37,28 +52,5 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent Login = new Intent(this, LoginActivity.class);
         startActivity(Login);
-    }
-
-
-    public void onClick(View view) {
-
-        switch (view.getId())
-        {
-
-            case R.id.facebook:
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
-
-                //
-                break;
-
-            case R.id.kakao:
-                Intent intent2 = new Intent(this, LoginActivity.class);
-                startActivity(intent2);
-                //
-                break;
-
-
-        }
     }
 }

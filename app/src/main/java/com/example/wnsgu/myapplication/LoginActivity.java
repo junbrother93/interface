@@ -33,7 +33,7 @@ public class LoginActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Intent Image = new Intent(this, ImageClick.class);
+        final Intent Image = new Intent(this, Activity2.class);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
         callbackManager = CallbackManager.Factory.create();
@@ -106,7 +106,7 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        final Intent intent = new Intent(this, LoginActivity.class);
+        final Intent intent = new Intent(this, Activity2.class);
         switch (view.getId())
         {
 
