@@ -35,7 +35,6 @@ public class KakaoSignupActivity extends AppCompatActivity {
      */
     protected void requestMe() { //유저의 정보를 받아오는 함수
 
-        final Intent Image = new Intent(this, ImageClick.class);
         UserManagement.requestMe(new MeResponseCallback() {
             @Override
             public void onFailure(ErrorResult errorResult) {
@@ -67,7 +66,7 @@ public class KakaoSignupActivity extends AppCompatActivity {
             public void onSuccess(UserProfile userProfile) {  //성공 시 userProfile 형태로 반환
                 Logger.d("UserProfile : " + userProfile);
                 Toast.makeText(getApplicationContext(), "카카오톡 로그인 성공", Toast.LENGTH_LONG).show();
-                startActivity(Image);
+                redirectActivity2();
             }
 
         });
@@ -80,6 +79,20 @@ public class KakaoSignupActivity extends AppCompatActivity {
 
     protected void redirectLoginActivity() {
         final Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+    }
+
+    protected void redirectImageActivity() {
+        final Intent intent = new Intent(this, ImageClick.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+    }
+
+    protected void redirectActivity2() {
+        final Intent intent = new Intent(this, Activity2.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();

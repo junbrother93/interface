@@ -3,7 +3,6 @@ package com.example.wnsgu.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -15,8 +14,6 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
 
@@ -24,52 +21,60 @@ import com.kakao.util.helper.log.Logger;
  * Created by wnsgu on 2017-08-04.
  */
 
-public class LoginActivity  extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    private SessionCallback callback;      //콜백 선언
-    CallbackManager callbackManager;
+    private SessionCallback callback;      //콜백 선언 for kakao
+    CallbackManager callbackManager;       //콜백 선언 for facebook
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Intent Image = new Intent(this, Activity2.class);
+        callback = new SessionCallback();                // 이 두개의 함수 중요함 for kakao
+        Session.getCurrentSession().addCallback(callback);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+
         callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-
-                        Toast.makeText(getApplicationContext(), "페이스북 로그인 성공", Toast.LENGTH_LONG).show();
-                        startActivity(Image);
 
 
-                        // App code
-                    }
 
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(getApplicationContext(), "페이스북 로그인 취소", Toast.LENGTH_LONG).show();
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Toast.makeText(getApplicationContext(), "페이스북 로그인 성공", Toast.LENGTH_LONG).show();
+                redirectActivity2();
+                // App code
+            }
 
-                        // App code
-                    }
+            @Override
+            public void onCancel() {
+                Toast.makeText(getApplicationContext(), "페이스북 로그인 취소", Toast.LENGTH_LONG).show();
+                // App code
+            }
 
-                    @Override
-                    public void onError(FacebookException exception) {
-                        Toast.makeText(getApplicationContext(), "페이스북 로그인 실패", Toast.LENGTH_LONG).show();
+            @Override
+            public void onError(FacebookException exception) {
+                Toast.makeText(getApplicationContext(), "페이스북 로그인 실패", Toast.LENGTH_LONG).show();
+                // App code
+            }
+        });
 
-                        // App code
-                    }
-                });
-        callback = new SessionCallback();                  // 이 두개의 함수 중요함
-        Session.getCurrentSession().addCallback(callback);
     }
+
+
+
+
+    // kakao
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
@@ -85,12 +90,13 @@ public class LoginActivity  extends AppCompatActivity {
 
         @Override
         public void onSessionOpened() {
+            Toast.makeText(getApplicationContext(), "세션 연결 성공", Toast.LENGTH_LONG).show();
             redirectSignupActivity();  // 세션 연결성공 시 redirectSignupActivity() 호출
         }
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
-            if(exception != null) {
+            if (exception != null) {
                 Logger.e(exception);
             }
             Toast.makeText(getApplicationContext(), "세션 연결 실패", Toast.LENGTH_LONG).show();
@@ -105,20 +111,10 @@ public class LoginActivity  extends AppCompatActivity {
         finish();
     }
 
-    public void onClick(View view) {
+    protected void redirectActivity2() {
         final Intent intent = new Intent(this, Activity2.class);
-        switch (view.getId())
-        {
-
-            case R.id.com_kakao_logout:
-                UserManagement.requestLogout(new LogoutResponseCallback() {
-                    @Override
-                    public void onCompleteLogout() {
-                        Toast.makeText(getApplicationContext(), "로그아웃 성공", Toast.LENGTH_LONG).show();
-                        startActivity(intent);
-                    }
-                });
-        }
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
     }
-
 }
