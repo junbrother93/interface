@@ -1,8 +1,8 @@
 package com.example.wnsgu.myapplication;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -21,7 +21,7 @@ import com.kakao.util.helper.log.Logger;
  * Created by wnsgu on 2017-08-04.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
 
     private SessionCallback callback;      //콜백 선언 for kakao
     CallbackManager callbackManager;       //콜백 선언 for facebook
@@ -74,9 +74,13 @@ public class LoginActivity extends AppCompatActivity {
 
         if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
             return;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        }   // kakao
+
+
+        super.onActivityResult(requestCode, resultCode, data);  // kakao, facebook 같이 사용
+
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);    // facebook
     }
 
     @Override

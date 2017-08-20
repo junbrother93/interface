@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        /*
         //listview, footer, header 참조 회득
         ListView listview = (ListView)findViewById(R.id.listview1);
         final View footer = getLayoutInflater().inflate(R.layout.navigation_bar, null, false);
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter();
         listview.setAdapter(adapter);
+        */
 
 
         // Add code to print out the key hash
