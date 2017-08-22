@@ -5,10 +5,12 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/Popup"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:text="1"/>
+        android:onClick="CertiClick"
+        android:text="교육"/>
 
     <Button
         android:id="@+id/CertiBtn"
