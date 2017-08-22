@@ -32,6 +32,8 @@
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".Activity2"/>
         <activity android:name=".Activity3"/>
+        <activity android:name=".PopupActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />

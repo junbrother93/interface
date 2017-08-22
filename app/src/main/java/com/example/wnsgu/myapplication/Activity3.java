@@ -3,9 +3,7 @@ package com.example.wnsgu.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
@@ -23,6 +21,16 @@ ImageView iv;
 
 
         Button EduBtn = (Button)findViewById(R.id.EduBtn);
+        Button Popup = (Button)findViewById(R.id.Popup);
+
+        //
+        Intent intent = getIntent();
+        String local = intent.getStringExtra("local");
+        Popup.setText(local);
+        //
+
+
+        Popup.setOnClickListener(this);
         EduBtn.setOnClickListener(this);
 
 
@@ -75,11 +83,16 @@ ImageView iv;
         return true;
     }
     public void onClick(View v) {
+        final Intent Popup = new Intent(this, PopupActivity.class);
         final Intent Act2 = new Intent(this, Activity2.class);
         switch (v.getId()) {
             case R.id.EduBtn:
                 finish();
                 startActivity(Act2);
+                break;
+
+            case R.id.Popup:
+                startActivity(Popup);
                 break;
         }
     }

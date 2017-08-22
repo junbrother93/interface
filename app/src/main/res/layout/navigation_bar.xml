@@ -19,6 +19,7 @@
         android:text="자격증"/>
 
     <Button
+        android:id="@+id/Popup"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"

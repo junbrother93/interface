@@ -4,12 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+
+import static com.example.wnsgu.myapplication.R.id.CertiBtn;
 
 public class Activity2 extends Activity implements View.OnClickListener {
 
@@ -19,7 +20,18 @@ public class Activity2 extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity2);
 
         Button CertiBtn = (Button)findViewById(R.id.CertiBtn);
+        Button Popup = (Button)findViewById(R.id.Popup);
+
+        //
+        Intent intent = getIntent();
+        String local = intent.getStringExtra("local");
+        Popup.setText(local);
+        //
+
+
+        Popup.setOnClickListener(this);
         CertiBtn.setOnClickListener(this);
+
         //listview, footer, header 참조 회득
         ListView listview = (ListView)findViewById(R.id.listview1);
         final View footer = getLayoutInflater().inflate(R.layout.navigation_bar, null, false);
@@ -68,11 +80,17 @@ public class Activity2 extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View v) {
+        final Intent Popup = new Intent(this, PopupActivity.class);
         final Intent Act3 = new Intent(this, Activity3.class);
         switch (v.getId()) {
+
             case R.id.CertiBtn:
                 finish();
                 startActivity(Act3);
+                break;
+
+            case R.id.Popup:
+                startActivity(Popup);
                 break;
         }
     }
