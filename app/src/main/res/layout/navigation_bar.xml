@@ -11,10 +11,13 @@
         android:text="1"/>
 
     <Button
+        android:id="@+id/CertiBtn"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:text="2"/>
+        android:clickable="true"
+        android:onClick="CertiClick"
+        android:text="자격증"/>
 
     <Button
         android:layout_width="0dip"

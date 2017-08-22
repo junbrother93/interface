@@ -3,23 +3,29 @@ package com.example.wnsgu.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-public class Activity2 extends Activity implements View.OnClickListener {
+public class Activity3 extends Activity implements View.OnClickListener {
+ImageView iv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2);
 
+
         Button CertiBtn = (Button)findViewById(R.id.CertiBtn);
         CertiBtn.setOnClickListener(this);
+
+
         //listview, footer, header 참조 회득
         ListView listview = (ListView)findViewById(R.id.listview1);
         final View footer = getLayoutInflater().inflate(R.layout.navigation_bar, null, false);
@@ -32,18 +38,20 @@ public class Activity2 extends Activity implements View.OnClickListener {
         adapter = new ListViewAdapter();
         listview.setAdapter(adapter);
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목1","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목2","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목3","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목4","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목5","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목6","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목7","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목8","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목9","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목10","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목11","설명");
-        adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목12","설명");
+
+
+            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.sejong_logo), "자격증1", "세종대학교");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증2", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증3", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증4", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증5", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증6", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증7", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증8", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증9", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증10", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증11", "설명");
+            adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher), "자격증12", "설명");
 
 
     }
@@ -66,7 +74,6 @@ public class Activity2 extends Activity implements View.OnClickListener {
         });
         return true;
     }
-
     public void onClick(View v) {
         final Intent Act3 = new Intent(this, Activity3.class);
         switch (v.getId()) {
