@@ -22,8 +22,8 @@ ImageView iv;
         setContentView(R.layout.activity2);
 
 
-        Button CertiBtn = (Button)findViewById(R.id.CertiBtn);
-        CertiBtn.setOnClickListener(this);
+        Button EduBtn = (Button)findViewById(R.id.EduBtn);
+        EduBtn.setOnClickListener(this);
 
 
         //listview, footer, header 참조 회득
@@ -75,10 +75,11 @@ ImageView iv;
         return true;
     }
     public void onClick(View v) {
-        final Intent Act3 = new Intent(this, Activity3.class);
+        final Intent Act2 = new Intent(this, Activity2.class);
         switch (v.getId()) {
-            case R.id.CertiBtn:
-                startActivity(Act3);
+            case R.id.EduBtn:
+                finish();
+                startActivity(Act2);
                 break;
         }
     }

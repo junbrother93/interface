@@ -71,6 +71,7 @@ public class Activity2 extends Activity implements View.OnClickListener {
         final Intent Act3 = new Intent(this, Activity3.class);
         switch (v.getId()) {
             case R.id.CertiBtn:
+                finish();
                 startActivity(Act3);
                 break;
         }
