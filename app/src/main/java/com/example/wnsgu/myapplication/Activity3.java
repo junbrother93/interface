@@ -20,8 +20,18 @@ ImageView iv;
         setContentView(R.layout.activity2);
 
 
-        Button CertiBtn = (Button)findViewById(R.id.CertiBtn);
-        CertiBtn.setOnClickListener(this);
+        Button EduBtn = (Button)findViewById(R.id.EduBtn);
+        Button Popup = (Button)findViewById(R.id.Popup);
+
+        //
+        Intent intent = getIntent();
+        String local = intent.getStringExtra("local");
+        Popup.setText(local);
+        //
+
+
+        Popup.setOnClickListener(this);
+        EduBtn.setOnClickListener(this);
 
 
         //listview, footer, header 참조 회득
@@ -73,10 +83,16 @@ ImageView iv;
         return true;
     }
     public void onClick(View v) {
-        final Intent Act3 = new Intent(this, Activity3.class);
+        final Intent Popup = new Intent(this, PopupActivity.class);
+        final Intent Act2 = new Intent(this, Activity2.class);
         switch (v.getId()) {
-            case R.id.CertiBtn:
-                startActivity(Act3);
+            case R.id.EduBtn:
+                finish();
+                startActivity(Act2);
+                break;
+
+            case R.id.Popup:
+                startActivity(Popup);
                 break;
         }
     }

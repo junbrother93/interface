@@ -86,11 +86,19 @@ public class Activity2 extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         final Intent ActPop = new Intent(this, PopupActivity.class);
         final Intent Act3 = new Intent(this, Activity3.class);
+<<<<<<< HEAD
         //final Intent Act2 = new Intent(this, Activity2.class);
         switch (view.getId()) {
             case CertiBtn:
+=======
+        switch (v.getId()) {
+
+            case R.id.CertiBtn:
+                finish();
+>>>>>>> 70ca901443e11f48394c67d85cda0ffebcbd196f
                 startActivity(Act3);
                 break;
+
             case R.id.Popup:
                 startActivity(ActPop);
                 break;

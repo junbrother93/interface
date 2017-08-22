@@ -5,23 +5,26 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/Popup"
+        android:id="@+id/EduBtn"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
+<<<<<<< HEAD
         android:onClick="onClick"
         android:text="교육"/>
+=======
+        android:text="교육정보"/>
+>>>>>>> 70ca901443e11f48394c67d85cda0ffebcbd196f
 
     <Button
         android:id="@+id/CertiBtn"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:clickable="true"
-        android:onClick="CertiClick"
         android:text="자격증"/>
 
     <Button
+        android:id="@+id/Popup"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
