@@ -39,6 +39,10 @@ public class LoginActivity extends Activity {
         callbackManager = CallbackManager.Factory.create();
 
 
+        //LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        // 페이스북 로그인 확인
+        //Session.getCurrentSession();
+
 
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -117,7 +121,7 @@ public class LoginActivity extends Activity {
 
     protected void redirectActivity2() {
         final Intent intent = new Intent(this, Activity2.class);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();
     }

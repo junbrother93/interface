@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -14,22 +15,26 @@ import static com.example.wnsgu.myapplication.R.id.CertiBtn;
 
 public class Activity2 extends Activity implements View.OnClickListener {
 
+    public static Activity AActivity;
+    public static Button Popup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2);
 
+        AActivity = Activity2.this;
+
         Button CertiBtn = (Button)findViewById(R.id.CertiBtn);
-        Button Popup = (Button)findViewById(R.id.Popup);
 
         //
         Intent intent = getIntent();
         String local = intent.getStringExtra("local");
-        Popup.setText(local);
+        Popup = (Button)findViewById(R.id.Popup);
+        Log.v("local: ", "local" + local);
+        if(local == null);
+        else Popup.setText(local);
         //
 
-
-        Popup.setOnClickListener(this);
         CertiBtn.setOnClickListener(this);
 
         //listview, footer, header 참조 회득
@@ -57,7 +62,6 @@ public class Activity2 extends Activity implements View.OnClickListener {
         adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목11","설명");
         adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목12","설명");
 
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,15 +83,16 @@ public class Activity2 extends Activity implements View.OnClickListener {
         return true;
     }
 
-    public void onClick(View v) {
-        final Intent Popup = new Intent(this, PopupActivity.class);
+    public void onClick(View view) {
+        final Intent ActPop = new Intent(this, PopupActivity.class);
         final Intent Act3 = new Intent(this, Activity3.class);
-        switch (v.getId()) {
+        //final Intent Act2 = new Intent(this, Activity2.class);
+        switch (view.getId()) {
             case CertiBtn:
                 startActivity(Act3);
                 break;
             case R.id.Popup:
-                startActivity(Popup);
+                startActivity(ActPop);
                 break;
         }
     }
