@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by Junhyeong on 2017-08-22.
@@ -101,16 +102,13 @@ public class PopupActivity_Local extends Activity {
                 break;
         }
         Intent intent = new Intent(this, Activity2.class);
-
         local = localId.getText().toString();
-        //intent.putExtra("local", local);
-        Button Popup = (Button) Activity2.EduBtn;
-        Popup.setText(local);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        //Activity2 A2 = (Activity2) Activity2.AActivity;
-        //A2.finish();
-        //startActivity(intent);
-        // 얘를 startActivity 시키지 말고 켜져있는 액티비티를 다시 불러오는... 그런식으로 해야할듯
+
+        Button EduBtn =  Activity2.EduBtn;
+        TextView TxtLocal = Activity2.TxtLocal;
+
+        EduBtn.setText(local);
+        TxtLocal.setText(local);
         finish();
     }
 }

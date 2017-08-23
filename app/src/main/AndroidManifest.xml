@@ -34,6 +34,7 @@
         <activity android:name=".Activity3"/>
         <activity android:name=".PopupActivity_Local"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
@@ -64,7 +65,5 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
-
     </application>
 </manifest>

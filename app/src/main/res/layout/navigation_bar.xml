@@ -19,11 +19,11 @@
         android:text="자격증"/>
 
     <Button
-        android:id="@+id/Popup"
+        android:id="@+id/Server"
         android:layout_width="0dip"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:text="3"/>
+        android:text="서버"/>
 
 
 

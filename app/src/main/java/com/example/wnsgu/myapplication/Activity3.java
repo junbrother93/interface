@@ -21,16 +21,6 @@ ImageView iv;
 
 
         Button EduBtn = (Button)findViewById(R.id.EduBtn);
-        Button Popup = (Button)findViewById(R.id.Popup);
-
-        //
-        Intent intent = getIntent();
-        String local = intent.getStringExtra("local");
-        Popup.setText(local);
-        //
-
-
-        Popup.setOnClickListener(this);
         EduBtn.setOnClickListener(this);
 
 
