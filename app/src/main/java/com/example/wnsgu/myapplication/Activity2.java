@@ -11,12 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import static com.example.wnsgu.myapplication.R.id.CertiBtn;
-
 public class Activity2 extends Activity implements View.OnClickListener {
 
     public static Activity AActivity;
-    public static Button Popup;
+    public static Button EduBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +27,10 @@ public class Activity2 extends Activity implements View.OnClickListener {
         //
         Intent intent = getIntent();
         String local = intent.getStringExtra("local");
-        Popup = (Button)findViewById(R.id.Popup);
+        EduBtn = (Button)findViewById(R.id.EduBtn);
         Log.v("local: ", "local" + local);
         if(local == null);
-        else Popup.setText(local);
+        else EduBtn.setText(local);
         //
 
         CertiBtn.setOnClickListener(this);
@@ -63,6 +61,9 @@ public class Activity2 extends Activity implements View.OnClickListener {
         adapter.addItem(ContextCompat.getDrawable(this, R.mipmap.ic_launcher),"제목12","설명");
 
     }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 // Inflate the menu; this adds items to the action bar if it is present.
@@ -84,22 +85,16 @@ public class Activity2 extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-        final Intent ActPop = new Intent(this, PopupActivity.class);
+        final Intent ActPop = new Intent(this, PopupActivity_Local.class);
         final Intent Act3 = new Intent(this, Activity3.class);
-<<<<<<< HEAD
         //final Intent Act2 = new Intent(this, Activity2.class);
         switch (view.getId()) {
-            case CertiBtn:
-=======
-        switch (v.getId()) {
-
             case R.id.CertiBtn:
                 finish();
->>>>>>> 70ca901443e11f48394c67d85cda0ffebcbd196f
                 startActivity(Act3);
                 break;
 
-            case R.id.Popup:
+            case R.id.EduBtn:
                 startActivity(ActPop);
                 break;
         }

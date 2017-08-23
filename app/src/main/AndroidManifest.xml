@@ -32,7 +32,7 @@
         <activity android:name=".KakaoSignupActivity" />
         <activity android:name=".Activity2"/>
         <activity android:name=".Activity3"/>
-        <activity android:name=".PopupActivity"
+        <activity android:name=".PopupActivity_Local"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
         <meta-data
             android:name="com.kakao.sdk.AppKey"

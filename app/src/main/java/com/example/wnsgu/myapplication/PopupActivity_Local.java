@@ -11,7 +11,7 @@ import android.widget.Button;
  * Created by Junhyeong on 2017-08-22.
  */
 
-public class PopupActivity extends Activity {
+public class PopupActivity_Local extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -104,7 +104,7 @@ public class PopupActivity extends Activity {
 
         local = localId.getText().toString();
         //intent.putExtra("local", local);
-        Button Popup = (Button) Activity2.Popup;
+        Button Popup = (Button) Activity2.EduBtn;
         Popup.setText(local);
         //intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         //Activity2 A2 = (Activity2) Activity2.AActivity;

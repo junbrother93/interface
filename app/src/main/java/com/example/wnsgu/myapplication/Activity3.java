@@ -83,16 +83,11 @@ ImageView iv;
         return true;
     }
     public void onClick(View v) {
-        final Intent Popup = new Intent(this, PopupActivity.class);
+        final Intent EduBtn = new Intent(this, PopupActivity_Local.class);
         final Intent Act2 = new Intent(this, Activity2.class);
         switch (v.getId()) {
             case R.id.EduBtn:
-                finish();
-                startActivity(Act2);
-                break;
-
-            case R.id.Popup:
-                startActivity(Popup);
+                startActivity(EduBtn);
                 break;
         }
     }
